@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>فکرامین</title>
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css"
+          rel="stylesheet"
+          type="text/css"/>
+    <style>
+        body {
+            font-family: Vazirmatn, Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f8ff;
+            direction: rtl;
+        }
+
+        .container {
+            width: 50%;
+            margin: 0 auto;
+            padding-top: 50px;
+        }
+
+        .progress-bar {
+            margin: 20px 0 40px 0;
+            height: 40px;
+            border-radius: 3px;
+            overflow: hidden;
+            background-color: #e0e0e0;
+        }
+
+        .progress-bar div {
+            height: 100%;
+            line-height: 40px;
+            color: #000000cc;
+            text-align: center;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div>
+        <h2>سال</h2>
+        <div class="progress-bar" id="year-progress">
+            <div></div>
+        </div>
+    </div>
+    <div>
+        <h2>ماه</h2>
+        <div class="progress-bar" id="month-progress">
+            <div></div>
+        </div>
+    </div>
+    <div>
+        <h2>هفته</h2>
+        <div class="progress-bar" id="week-progress">
+            <div></div>
+        </div>
+    </div>
+    <div>
+        <h2>روز</h2>
+        <div class="progress-bar" id="day-progress">
+            <div></div>
+        </div>
+    </div>
+    <div>
+        <h2>ساعت</h2>
+        <div class="progress-bar" id="hour-progress">
+            <div></div>
+        </div>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/jalali-moment@3.3.10/dist/jalali-moment.browser.js"></script>
+<script>
+    function updateProgressBars() {
+        const now = moment();
+        const startOfYear = moment().startOf('jYear');
+        const startOfNextYear = moment().startOf('jYear').add(1, 'jYear');
+        const yearProgress = ((now - startOfYear) / (startOfNextYear - startOfYear)) * 100;
+
+        const startOfMonth = moment().startOf('jMonth');
+        const startOfNextMonth = moment().startOf('jMonth').add(1, 'jMonth');
+        const monthProgress = ((now - startOfMonth) / (startOfNextMonth - startOfMonth)) * 100;
+
+        const startOfWeek = moment().startOf('week');
+        const startOfNextWeek = moment().startOf('week').add(1, 'week');
+        const weekProgress = ((now - startOfWeek) / (startOfNextWeek - startOfWeek)) * 100;
+
+        const startOfDay = moment().startOf('day');
+        const startOfNextDay = moment().startOf('day').add(1, 'day');
+        const dayProgress = ((now - startOfDay) / (startOfNextDay - startOfDay)) * 100;
+
+        const startOfHour = moment().startOf('hour');
+        const startOfNextHour = moment().startOf('hour').add(1, 'hour');
+        const hourProgress = ((now - startOfHour) / (startOfNextHour - startOfHour)) * 100;
+
+        document.getElementById('year-progress').firstElementChild.style.width = yearProgress + '%';
+        document.getElementById('year-progress').firstElementChild.style.backgroundColor = '#ffb3ba';
+        document.getElementById('year-progress').firstElementChild.textContent = yearProgress.toFixed(2) + '%';
+
+        document.getElementById('month-progress').firstElementChild.style.width = monthProgress + '%';
+        document.getElementById('month-progress').firstElementChild.style.backgroundColor = '#ffdfba';
+        document.getElementById('month-progress').firstElementChild.textContent = monthProgress.toFixed(2) + '%';
+
+        document.getElementById('week-progress').firstElementChild.style.width = weekProgress + '%';
+        document.getElementById('week-progress').firstElementChild.style.backgroundColor = '#ffffba';
+        document.getElementById('week-progress').firstElementChild.textContent = weekProgress.toFixed(2) + '%';
+
+        document.getElementById('day-progress').firstElementChild.style.width = dayProgress + '%';
+        document.getElementById('day-progress').firstElementChild.style.backgroundColor = '#baffc9';
+        document.getElementById('day-progress').firstElementChild.textContent = dayProgress.toFixed(2) + '%';
+
+        document.getElementById('hour-progress').firstElementChild.style.width = hourProgress + '%';
+        document.getElementById('hour-progress').firstElementChild.style.backgroundColor = '#bae1ff';
+        document.getElementById('hour-progress').firstElementChild.textContent = hourProgress.toFixed(2) + '%';
+    }
+
+    setInterval(updateProgressBars, 1000);
+    updateProgressBars();
+</script>
+</body>
+</html>
