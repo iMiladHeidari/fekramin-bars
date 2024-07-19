@@ -21,12 +21,20 @@
             padding-top: 50px;
         }
 
+        .progress-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
         .progress-bar {
-            margin: 20px 0 40px 0;
+            width: 80%;
             height: 40px;
             border-radius: 3px;
             overflow: hidden;
             background-color: #e0e0e0;
+            position: relative;
         }
 
         .progress-bar div {
@@ -36,35 +44,40 @@
             text-align: center;
             border-radius: 3px;
         }
+
+        h2 {
+            width: 20%;
+            margin: 0;
+        }
     </style>
 </head>
 <body>
 <div class="container">
-    <div>
+    <div class="progress-container">
         <h2>سال</h2>
         <div class="progress-bar" id="year-progress">
             <div></div>
         </div>
     </div>
-    <div>
+    <div class="progress-container">
         <h2>ماه</h2>
         <div class="progress-bar" id="month-progress">
             <div></div>
         </div>
     </div>
-    <div>
+    <div class="progress-container">
         <h2>هفته</h2>
         <div class="progress-bar" id="week-progress">
             <div></div>
         </div>
     </div>
-    <div>
+    <div class="progress-container">
         <h2>روز</h2>
         <div class="progress-bar" id="day-progress">
             <div></div>
         </div>
     </div>
-    <div>
+    <div class="progress-container">
         <h2>ساعت</h2>
         <div class="progress-bar" id="hour-progress">
             <div></div>
